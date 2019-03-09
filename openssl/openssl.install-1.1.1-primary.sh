@@ -1,5 +1,6 @@
-#!/bin/bash
+!/bin/bash
 OPENSSL_VER="1.1.1";
+OPENSSL_VER2="1.1.1a";
 INSTALL_DIR="/usr";
 
 WORKDIR="/usr/local/src"
@@ -7,15 +8,15 @@ USERNAME="root"
 
 CWD=${WORKDIR}
 
-URL="https://www.openssl.org/source/old/${OPENSSL_VER}/openssl-${OPENSSL_VER}.tar.gz"
-LOCAL_NAME="openssl-${OPENSSL_VER}-latest.tar.gz"
-OUTPUT_DIR="${CWD}/openssl-${OPENSSL_VER}-latest.tar.gz"
+URL="https://www.openssl.org/source/old/${OPENSSL_VER}/openssl-${OPENSSL_VER2}.tar.gz"
+LOCAL_NAME="openssl-${OPENSSL_VER2}-latest.tar.gz"
+OUTPUT_DIR="${CWD}/openssl-${OPENSSL_VER2}-latest.tar.gz"
 
 wget ${URL} -O ${CWD}/${LOCAL_NAME}
 tar -zxvf ${OUTPUT_DIR} -C ${WORKDIR};
 
 cd ${WORKDIR};
-DIR=`ls -1d openssl-${VER}*/ | tail -1`;
+DIR=`ls -1d openssl-${OPENSSL_VER2}/ | tail -1`;
 cd ${DIR};
 
 ./config --prefix=${INSTALL_DIR} no-ssl2 no-ssl3 zlib-dynamic -fPIC shared;
@@ -33,4 +34,3 @@ if [ "${c}" == "0" ]; then
 fi
 
 exit 0;
-
