@@ -1,6 +1,6 @@
 #!/bin/bash
-OPENSSL_VER="1.1.1";
-OPENSSL_VER2="1.1.1a";
+OPENSSL_VER="1.0.1";
+OPENSSL_VER2="1.0.1t";
 INSTALL_DIR="/usr";
 
 WORKDIR="/usr/local/src"
@@ -16,7 +16,7 @@ wget ${URL} -O ${CWD}/${LOCAL_NAME}
 tar -zxvf ${OUTPUT_DIR} -C ${WORKDIR};
 
 cd ${WORKDIR};
-DIR=`ls -1d openssl-${OPENSSL_VER2}/ | tail -1`;
+DIR=`ls -1d openssl-${OPENSSL_VER2}*/ | tail -1`;
 cd ${DIR};
 
 ./config --prefix=${INSTALL_DIR} no-ssl2 no-ssl3 zlib-dynamic -fPIC shared;
